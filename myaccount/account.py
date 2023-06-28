@@ -3,6 +3,9 @@ import json
 import hashlib
 import requests
 import uuid
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from core.const import API_ACCESS_KEY, API_SECRET_KEY, API_UPBIT_SERVER_URL
 
 params = {
