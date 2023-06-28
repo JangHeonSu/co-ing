@@ -1,25 +1,20 @@
 from django.test import TestCase
 
 import jwt
+import json
 import hashlib
 import requests
 import uuid
-from urllib.parse import urlencode, unquote
 from core.const import API_ACCESS_KEY, API_SECRET_KEY, API_UPBIT_SERVER_URL
-
-
-print(API_ACCESS_KEY)
-print(API_SECRET_KEY)
-print(API_UPBIT_SERVER_URL)
 
 params = {
   'currency': 'KRW',
   'state': 'done'
 }
-query_string = unquote(urlencode(params, doseq=True)).encode("utf-8")
+query_string = json.dumps(params)
 
 m = hashlib.sha512()
-m.update(query_string)
+m.update(query_string.encode("utf-8"))
 query_hash = m.hexdigest()
 
 payload = {
@@ -29,12 +24,35 @@ payload = {
 
 jwt_token = jwt.encode(payload, API_SECRET_KEY)
 authorization = 'Bearer {}'.format(jwt_token)
-print(authorization)
 headers = {
   'Authorization': authorization,
+  'Content-Type': 'application/json'
 }
 
-res = requests.get(API_UPBIT_SERVER_URL + "/v1/account", headers=headers)
+res = requests.get(API_UPBIT_SERVER_URL["ACCOUNTS"], headers=headers)
 print(res.json())
-# print(f"{currency_data['currency']} : {currency_data['balance']}")
 
+
+# import requests
+
+# url = "https://api.upbit.com/v1/candles/minutes/1?market=KRW-BTC&count=3"
+
+# headers = {"accept": "application/json"}
+
+# response = requests.get(url, headers=headers)
+
+# print(response.text)
+
+# import requests
+
+# url = "https://api.upbit.com/v1/ticker"
+
+# headers = {"accept": "application/json"}
+
+# params = {
+#   'markets': ['KRW-BTC', 'KRW-ETH']
+# }
+
+# response = requests.get(url, headers=headers, params=params)
+
+# print(response.text)
