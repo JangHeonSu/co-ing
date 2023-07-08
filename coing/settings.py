@@ -73,7 +73,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'coing.wsgi.application'
-ASGI_APPLICATION = 'coing.asgi.application'
+# ASGI_APPLICATION = 'coing.asgi.application'
 
 
 # Database
@@ -105,11 +105,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer"
-    }
-}
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "channels.layers.InMemoryChannelLayer"
+#     }
+# }
 
 
 # Internationalization

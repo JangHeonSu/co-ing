@@ -13,7 +13,7 @@ async def ws_client():
     
     test = [
             {"ticket":"test"},
-            {"type":"ticker", "codes":["KRW-BTC"]},
+            {"type":"ticker", "codes":["KRW-BTC", "KRW-ETH"]},
             {"format":"SIMPLE"}
         ]
     
@@ -33,5 +33,3 @@ async def main():
 if __name__ == "__main__":
     asyncio.run(main()) 
     
-def test():
-    print(API_UPBIT_WS_URL)
