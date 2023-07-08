@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     
     'coins.apps.CoinsConfig',
     'myaccount.apps.MyaccountConfig',
+    'stocks.apps.StocksConfig',
+    'indicator.apps.IndicatorConfig',
+    'trader.apps.TraderConfig',
 ]
 
 MIDDLEWARE = [
